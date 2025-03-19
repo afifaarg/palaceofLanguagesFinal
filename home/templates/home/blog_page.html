@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+{% image page.banner_image original as hero_image %}
+<!-- Banner Section -->
+
+<div class="relative h-64 md:h-96 bg-cover bg-center" style="background-image: url('{{ hero_image.url }}')">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative z-10 flex items-center justify-center h-full">
+      <h1 class="text-4xl md:text-6xl font-bold text-white text-center">
+          {{ page.title }}
+      </h1>
+  </div>
+</div>
+<div class="container mx-auto px-4 py-12">
+
+  <!-- Introduction -->
+  <div class="text-center mb-12">
+    <div class="text-gray-600 prose max-w-2xl mx-auto">
+      {{ page.introduction|richtext }}
+    </div>
+  </div>
+
+  <!-- Latest Event -->
+  {% with latest_event=page.get_events.first %}
+    {% if latest_event %}
+      <div class="group relative mb-12 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="flex flex-col lg:flex-row">
+          <!-- Image -->
+          <div class="lg:w-1/2 overflow-hidden">
+            {% if latest_event.hero_image %}
+              {% image latest_event.hero_image fill-800x600 as event_image %}
+              <img
+                src="{{ event_image.url }}"
+                alt="{{ latest_event.hero_title }}"
+                class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+              />
+            {% endif %}
+          </div>
+          <!-- Content -->
+          <div class="lg:w-1/2 p-8 bg-gray-50">
+            <span class="bg-primary text-white font-semibold px-4 py-1 text-sm rounded-full mb-4 inline-block">
+              Latest Event
+            </span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+              {{ latest_event.hero_title }}
+            </h2>
+            <p class="text-gray-600 mb-4">
+              {{ latest_event.event_overview|richtext|truncatewords:30 }}
+            </p>
+            <a
+              href="{% pageurl latest_event %}"
+              class="text-primary font-semibold hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Grid of Other Events -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for event in page.get_events|slice:"1:" %}
+      <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <!-- Image -->
+        {% if event.hero_image %}
+          {% image event.hero_image fill-600x400 as event_image %}
+          <img
+            src="{{ event_image.url }}"
+            alt="{{ event.hero_title }}"
+            class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105"
+          />
+        {% endif %}
+        <!-- Content -->
+        <div class="p-6 bg-white">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">
+            {{ event.hero_title }}
+          </h3>
+          <p class="text-gray-600 mb-4">
+            {{ event.event_overview|richtext|truncatewords:20 }}
+          </p>
+          <a
+            href="{% pageurl event %}"
+            class="text-primary font-semibold hover:underline"
+          >
+            Read More →
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

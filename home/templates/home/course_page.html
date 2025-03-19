@@ -1,5 +1,11 @@
+{% extends 'base.html' %} 
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block title %}Home - Palace School of Languages{% endblock %} 
+{% block content %}
+{% image page.banner_image original as hero_image %} 
+
 <!-- Banner Section -->
-<div class="relative h-64 md:h-96 bg-cover bg-center" style="background-image: url('{{ page.banner_image.url }}')">
+<div class="relative h-64 md:h-96 bg-cover bg-center" style="background-image: url('{{ hero_image.url }}')">
   <div class="absolute inset-0 bg-black bg-opacity-50"></div>
   <div class="relative z-10 flex items-center justify-center h-full">
     <h1 class="text-4xl md:text-6xl font-bold text-white text-center">
@@ -9,7 +15,7 @@
 </div>
 
 <!-- Course Details -->
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 ">
   <div class="bg-white p-8 rounded-lg shadow-lg">
     <!-- Breadcrumbs -->
     <ul class="flex items-center py-4">
@@ -62,7 +68,26 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="flex items-center gap-4">
           <div class="p-3 bg-indigo-50 rounded-full">
-            <i class="fas fa-book-open text-primary text-xl"></i>
+            <svg class=" text-primary text-xl" id='Bookmark_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+
+
+              <g transform="matrix(0.83 0 0 0.83 12 12)" >
+              <g style="" >
+              <g transform="matrix(1 0 0 1 0 -2)" >
+              <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 0.3;" transform=" translate(-12, -10)" d="M 15 3 L 15 10.2 L 13 8.799999999999999 L 11 10.2 L 11 3 L 7 3 C 5.9 3 5 3.9 5 5 L 5 17 L 19 17 L 19 3 L 15 3 z" stroke-linecap="round" />
+              </g>
+              <g transform="matrix(1 0 0 1 0 7)" >
+              <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -19)" d="M 20 22 L 7 22 C 5.3 22 4 20.7 4 19 C 4 17.3 5.3 16 7 16 L 20 16 L 20 18 L 7 18 C 6.4 18 6 18.4 6 19 C 6 19.6 6.4 20 7 20 L 20 20 L 20 22 z" stroke-linecap="round" />
+              </g>
+              <g transform="matrix(1 0 0 1 0 -1.5)" >
+              <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -10.5)" d="M 6 19 L 4 19 L 4 5 C 4 3.3 5.3 2 7 2 L 20 2 L 20 17 L 18 17 L 18 4 L 7 4 C 6.4 4 6 4.4 6 5 L 6 19 z" stroke-linecap="round" />
+              </g>
+              <g transform="matrix(1 0 0 1 1 -4.95)" >
+              <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-13, -7.05)" d="M 16 12.1 L 13 10 L 10 12.1 L 10 2 L 16 2 L 16 12.1 z M 13 7.6 L 14 8.299999999999999 L 14 4 L 12 4 L 12 8.3 L 13 7.6 z" stroke-linecap="round" />
+              </g>
+              </g>
+              </g>
+              </svg>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-gray-700">Program</h3>
@@ -70,8 +95,22 @@
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <div class="p-3 bg-indigo-50 rounded-full">
-            <i class="fas fa-users text-primary text-xl"></i>
+          <div class="p-3 bg-indigo-50 rounded-full">           
+            <svg class=" text-primary text-xl" id='Multiple_Man_Woman_2_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+              <g transform="matrix(0.83 0 0 0.83 12 12)" >
+              <g style="" >
+              <g transform="matrix(1 0 0 1 7.04 0)" >
+              <path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-19.04, -12)" d="M 19 22 L 23.5 22 L 23.5 19.114 C 23.49956587307392 17.882109096516974 22.746092738305343 16.77569328283049 21.6 16.324 L 17.5 14.5 L 17.5 12 C 17.5 12 19 11.5 19 9 C 19.826 9 19.826 7 19 7 C 19 6.754 19.847 4.888 19.5 3.5 C 19.153 2.112 16.4 1.687 14.574 2.227" stroke-linecap="round" />
+              </g>
+              <g transform="matrix(1 0 0 1 -3.5 -4.32)" >
+              <path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-8.5, -7.68)" d="M 10.5 13.119 C 12.03701596514064 13.279725730516859 13.585785129551613 12.955215054388301 14.929 12.190999999999999 C 15.05635282351934 12.11480979342225 15.143279939567487 11.98598394408921 15.16626665618519 11.839371188519152 C 15.189253372802893 11.692758432949095 15.145924151950165 11.543510312086141 15.048 11.431999999999999 C 14.541 10.854 14.19 10.114999999999998 14.037 7.858999999999998 C 13.754000000000001 3.668999999999998 10.928 2.1949999999999985 8.5 2.1949999999999985 C 6.071999999999999 2.1949999999999985 3.246 3.669 2.963 7.859 C 2.81 10.115 2.463 10.854 1.9520000000000002 11.432 C 1.8540758480498343 11.543510312086143 1.8107466271971067 11.692758432949097 1.83373334381481 11.839371188519154 C 1.8567200604325134 11.985983944089213 1.9436471764806602 12.114809793422252 2.071 12.191 C 3.4142148704483875 12.955215054388301 4.962984034859359 13.27972573051686 6.5 13.119000000000003" stroke-linecap="round" />
+              </g>
+              <g transform="matrix(1 0 0 1 -3.5 1.69)" >
+              <path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-8.5, -13.69)" d="M 11.186 14.707 C 10.822468374857255 14.594516067327175 10.55571661799251 14.28343530130415 10.5 13.907 L 10.5 12.352 C 10.5 12.113 10.73 11.885 10.907 11.724 C 11.582097821957449 11.152987846637744 11.980035787754812 10.319975892617283 12 9.436 L 12 7.307 C 10.640759706823257 7.102912738693322 9.399331227249604 6.419417687225199 8.500000000000002 5.380000000000001 C 7.600668772750398 6.419417687225199 6.359240293176743 7.102912738693323 5 7.307 L 5 9.436 C 5.019829424090026 10.320227145702727 5.418215836977709 11.153415548524501 6.094 11.724 C 6.2700000000000005 11.885 6.5 12.113 6.5 12.352 L 6.5 13.908000000000001 C 6.444283382007489 14.284435301304152 6.177531625142745 14.595516067327177 5.814 14.708000000000002 C 4.524593276525343 15.197947987931014 3.28962076424017 15.820628836730434 2.1289999999999916 16.56600000000001 C 1.023946777818939 17.339718436237234 0.4056359889119896 18.636311226234863 0.49999999999999956 19.982 L 0.5 22 L 16.5 22 L 16.5 19.982 C 16.595939133353372 18.63573602987236 15.977315844285652 17.3381081730618 14.870999999999999 16.564999999999998 C 13.71037923575982 15.819628836730423 12.475406723474652 15.196947987931004 11.185999999999996 14.706999999999994 Z" stroke-linecap="round" />
+              </g>
+              </g>
+              </g>
+              </svg>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-gray-700">Target Learner</h3>
@@ -80,7 +119,11 @@
         </div>
         <div class="flex items-center gap-4">
           <div class="p-3 bg-indigo-50 rounded-full">
-            <i class="fas fa-clock text-primary text-xl"></i>
+            <svg class="fas fa-clock text-primary text-xl" id='Clock_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+              <g transform="matrix(0.83 0 0 0.83 12 12)" >
+              <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 12 0 C 5.371094 0 0 5.371094 0 12 C 0 18.628906 5.371094 24 12 24 C 18.628906 24 24 18.628906 24 12 C 24 5.371094 18.628906 0 12 0 Z M 12 2 C 17.523438 2 22 6.476563 22 12 C 22 17.523438 17.523438 22 12 22 C 6.476563 22 2 17.523438 2 12 C 2 6.476563 6.476563 2 12 2 Z M 10.9375 3.875 L 10.5 12.0625 L 10.59375 12.9375 L 16.75 18.375 L 17.71875 17.375 L 12.625 11.96875 L 12.1875 3.875 Z" stroke-linecap="round" />
+              </g>
+              </svg>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-gray-700">Duration</h3>
@@ -89,7 +132,11 @@
         </div>
         <div class="flex items-center gap-4">
           <div class="p-3 bg-indigo-50 rounded-full">
-            <i class="fas fa-calendar-alt text-primary text-xl"></i>
+            <svg  class="fas fa-calendar-alt text-primary text-xl" id='Calendar_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+              <g transform="matrix(0.37 0 0 0.37 12 12)" >
+              <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" translate(-32, -32)" d="M 16 5 C 14.344 5 13 6.344 13 8 L 13 11 L 8 11 C 6.344 11 5 12.344 5 14 L 5 56 C 5 57.656 6.344 59 8 59 L 56 59 C 57.656 59 59 57.656 59 56 L 59 14 C 59 12.344 57.656 11 56 11 L 51 11 L 51 8 C 51 6.344 49.656 5 48 5 C 46.344 5 45 6.344 45 8 L 45 11 L 35 11 L 35 8 C 35 6.344 33.656 5 32 5 C 30.344 5 29 6.344 29 8 L 29 11 L 19 11 L 19 8 C 19 6.344 17.656 5 16 5 z M 16 7 C 16.551 7 17 7.449 17 8 L 17 16 C 17 16.551 16.551 17 16 17 C 15.449 17 15 16.551 15 16 L 15 8 C 15 7.449 15.449 7 16 7 z M 32 7 C 32.551 7 33 7.449 33 8 L 33 16 C 33 16.551 32.551 17 32 17 C 31.449 17 31 16.551 31 16 L 31 8 C 31 7.449 31.449 7 32 7 z M 48 7 C 48.551 7 49 7.449 49 8 L 49 16 C 49 16.551 48.551 17 48 17 C 47.449 17 47 16.551 47 16 L 47 8 C 47 7.449 47.449 7 48 7 z M 8 13 L 13 13 L 13 16 C 13 17.656 14.344 19 16 19 C 17.656 19 19 17.656 19 16 L 19 13 L 29 13 L 29 16 C 29 17.656 30.344 19 32 19 C 33.656 19 35 17.656 35 16 L 35 13 L 45 13 L 45 16 C 45 17.656 46.344 19 48 19 C 49.656 19 51 17.656 51 16 L 51 13 L 56 13 C 56.551 13 57 13.449 57 14 L 57 21 C 56.449 21 56 21.449 56 22 L 56 24 C 56 24.551 56.449 25 57 25 L 57 56 C 57 56.551 56.551 57 56 57 L 8 57 C 7.449 57 7 56.551 7 56 L 7 25 C 7.551 25 8 24.551 8 24 L 8 22 C 8 21.449 7.551 21 7 21 L 7 14 C 7 13.449 7.449 13 8 13 z M 12 21 C 11.449 21 11 21.449 11 22 L 11 24 C 11 24.551 11.449 25 12 25 C 12.551 25 13 24.551 13 24 L 13 22 C 13 21.449 12.551 21 12 21 z M 17 21 C 16.449 21 16 21.449 16 22 L 16 24 C 16 24.551 16.449 25 17 25 C 17.551 25 18 24.551 18 24 L 18 22 C 18 21.449 17.551 21 17 21 z M 22 21 C 21.449 21 21 21.449 21 22 L 21 24 C 21 24.551 21.449 25 22 25 C 22.551 25 23 24.551 23 24 L 23 22 C 23 21.449 22.551 21 22 21 z M 27 21 C 26.449 21 26 21.449 26 22 L 26 24 C 26 24.551 26.449 25 27 25 C 27.551 25 28 24.551 28 24 L 28 22 C 28 21.449 27.551 21 27 21 z M 32 21 C 31.449 21 31 21.449 31 22 L 31 24 C 31 24.551 31.449 25 32 25 C 32.551 25 33 24.551 33 24 L 33 22 C 33 21.449 32.551 21 32 21 z M 37 21 C 36.449 21 36 21.449 36 22 L 36 24 C 36 24.551 36.449 25 37 25 C 37.551 25 38 24.551 38 24 L 38 22 C 38 21.449 37.551 21 37 21 z M 42 21 C 41.449 21 41 21.449 41 22 L 41 24 C 41 24.551 41.449 25 42 25 C 42.551 25 43 24.551 43 24 L 43 22 C 43 21.449 42.551 21 42 21 z M 47 21 C 46.449 21 46 21.449 46 22 L 46 24 C 46 24.551 46.449 25 47 25 C 47.551 25 48 24.551 48 24 L 48 22 C 48 21.449 47.551 21 47 21 z M 52 21 C 51.449 21 51 21.449 51 22 L 51 24 C 51 24.551 51.449 25 52 25 C 52.551 25 53 24.551 53 24 L 53 22 C 53 21.449 52.551 21 52 21 z M 14 28 C 13.448 28 13 28.448 13 29 L 13 47 C 13 47.552 13.448 48 14 48 L 50 48 C 50.552 48 51 47.552 51 47 L 51 29 C 51 28.448 50.552 28 50 28 L 14 28 z M 15 30 L 22 30 L 22 37 L 15 37 L 15 30 z M 24 30 L 31 30 L 31 37 L 24 37 L 24 30 z M 33 30 L 40 30 L 40 37 L 33 37 L 33 30 z M 42 30 L 49 30 L 49 37 L 42 37 L 42 30 z M 15 39 L 22 39 L 22 46 L 15 46 L 15 39 z M 24 39 L 31 39 L 31 46 L 24 46 L 24 39 z M 33 39 L 40 39 L 40 46 L 33 46 L 33 39 z M 42 39 L 49 39 L 49 46 L 42 46 L 42 39 z M 10 51 C 9.449 51 9 51.449 9 52 C 9 52.551 9.449 53 10 53 L 54 53 C 54.551 53 55 52.551 55 52 C 55 51.449 54.551 51 54 51 L 10 51 z" stroke-linecap="round" />
+              </g>
+              </svg>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-gray-700">Schedule</h3>
@@ -100,11 +147,11 @@
 
       <!-- Enroll Button -->
       <div class="mt-8">
-        <button class="w-full md:w-auto bg-primary text-white py-3 px-8 rounded-lg hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all flex items-center gap-2">
-          <i class="fas fa-check-circle"></i>
+        <button class="w-full md:w-auto bg-primary text-white py-3 px-8 rounded-lg hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all flex items-center gap-2">     
           Enroll Now
         </button>
       </div>
     </div>
   </div>
 </div>
+{% endblock %}

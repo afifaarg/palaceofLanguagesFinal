@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'wagtail_localize',
     'wagtail_localize.locales',
+    'courses',
 ]
 WAGTAIL_CONTENT_LANGUAGES = [
     ('en', 'English'),

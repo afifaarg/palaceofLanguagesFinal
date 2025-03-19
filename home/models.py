@@ -54,6 +54,96 @@ class Program(models.Model):
         verbose_name_plural = "Programs"
 
 
+class BlogPage( Page, TranslatableMixin):
+    banner_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    introduction = RichTextField(blank=True)
+
+    # Content panels for Wagtail admin
+    content_panels = Page.content_panels + [
+        FieldPanel('banner_image'),
+        FieldPanel('introduction'),
+    ]
+
+    # Method to get all CoursePage instances
+    def get_events(self):
+        return EventPage.objects.live().public().order_by('-first_published_at')
+
+    # Register for translation
+    translatable_fields = [
+       
+       TranslatableField("introduction"),
+    ]
+
+
+
+class EventPage(Page):
+    # Hero Section
+    hero_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    hero_title = models.CharField(max_length=255, blank=True)
+    
+    # Event Overview
+    event_date = models.DateField()
+    event_overview = RichTextField(blank=True)
+    
+    # Dynamic Sections
+    sections = StreamField(
+        [
+            ("sections", StructBlock([
+                ("image", ImageChooserBlock(required=True)),
+                ("title", CharBlock(required=True)),
+                ("text", TextBlock(required=True)),
+            ]))
+        ],
+        use_json_field=True,
+        blank=True,
+        help_text="Add as many sections as you want",
+    )
+    # Testimonials
+    testimonials = StreamField(
+        [
+            ("testimonials", StructBlock([
+          
+                ("user", CharBlock(required=True)),
+                ("quote", TextBlock(required=True)),
+            ]))
+        ],
+        use_json_field=True,
+        blank=True,
+        help_text="Add as many testimonials as you want",
+    )
+
+    # Panels for Wagtail Admin
+    content_panels = Page.content_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel('hero_image'),
+                FieldPanel('hero_title'),
+            ],
+            heading="Hero Section"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('event_date'),
+                FieldPanel('event_overview'),
+            ],
+            heading="Event Overview"
+        ),
+        FieldPanel('sections'),
+        FieldPanel('testimonials'),
+    ]
+
 # Target Learner Choices
 TARGET_LEARNER_CHOICES = [
     ('students', 'Students'),
@@ -61,16 +151,20 @@ TARGET_LEARNER_CHOICES = [
 ]
 
 class CoursesPage( Page, TranslatableMixin):
-    # Optional: Add an introduction or description field
+    banner_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     introduction = RichTextField(blank=True)
 
     # Content panels for Wagtail admin
     content_panels = Page.content_panels + [
+        FieldPanel('banner_image'),
         FieldPanel('introduction'),
     ]
-
-    # Template for rendering the page
-    template = "courses/courses_page.html"
 
     # Method to get all CoursePage instances
     def get_courses(self):
@@ -78,8 +172,10 @@ class CoursesPage( Page, TranslatableMixin):
 
     # Register for translation
     translatable_fields = [
+       
        TranslatableField("introduction"),
     ]
+
 # CoursePage Model
 class CoursePage(Page, TranslatableMixin):
     # Banner Section
@@ -150,7 +246,6 @@ class CoursePage(Page, TranslatableMixin):
          TranslatableField("who_should_enroll"),
     ]
 
-    template = "courses_page.html"
 # HomePage Model
 class HomePage(Page, TranslatableMixin):
     # Hero Section
