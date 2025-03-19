@@ -150,7 +150,7 @@ class CoursePage(Page, TranslatableMixin):
          TranslatableField("who_should_enroll"),
     ]
 
-    template_page ="courses_page.html"
+    template = "courses_page.html"
 # HomePage Model
 class HomePage(Page, TranslatableMixin):
     # Hero Section
