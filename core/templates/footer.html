@@ -1,0 +1,76 @@
+{% load static  %}
+<!-- templates/footer.html -->
+<footer class="mt-32" style="background-color: rgba(37, 38, 65, 1)">
+    <div class="max-w-2xl mx-auto">
+      <div
+        class="flex py-12 justify-center text-white items-center px-20 sm:px-36"
+      >
+        <div class="relative">
+          <img src="{% static 'img/logo-footer.png' %}" width="350" height="350" />
+        </div>
+        <span
+          class="border-l border-gray-500 text-sm pl-5 py-2 font-semibold"
+        >
+          Your trusted language school
+        </span>
+      </div>
+  
+      <!-- Contact Form -->
+      <div class="text-center pb-16 pt-5">
+        <h2 class="text-gray-300 font-semibold text-xl mb-4">Contact Us</h2>
+        <form class="max-w-md mx-auto px-5 sm:px-0">
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="w-full rounded-full py-2 pl-5 bg-transparent border border-gray-400 mb-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-full rounded-full py-2 pl-5 bg-transparent border border-gray-400 mb-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
+          />
+          <textarea
+            placeholder="Your Message or Course Inquiry"
+            class="w-full rounded-2xl py-2 pl-5 bg-transparent border border-gray-400 mb-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
+            rows="4"
+          ></textarea>
+          <button
+            type="submit"
+            class="text-white w-full bg-primary sm:w-auto mx-auto font-semibold px-5 py-2 rounded-full"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+  
+      <!-- Social Media Links and Address -->
+      <div class="text-center pb-16 pt-5">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition-colors duration-300"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition-colors duration-300"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition-colors duration-300"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition-colors duration-300"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>

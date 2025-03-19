@@ -1,0 +1,589 @@
+{% extends 'base.html' %} 
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block title %}Home - Palace School of Languages{% endblock %} 
+{% block content %}
+{% image page.hero_background_image original as hero_image %} 
+
+
+<div
+  class="relative h-screen w-full flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left bg-cover bg-center"
+  style="
+    background-image: url('{{ hero_image.url }}');
+  ">
+  <div
+    class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
+  <main class="px-8 sm:px-24 z-10 sm:w-2/3">
+    <div class="">
+      <h2
+        class="text-4xl tracking-tight leading-10 font-extrabold sm:text-5xl text-white sm:leading-none md:text-6xl">
+        {{ page.hero_heading }}
+        <span class="text-primary">{{ page.hero_subheading }}</span>
+      </h2>
+      <p class="mt-3 text-white sm:mt-5 sm:max-w-xl md:mt-5 text-lg " style="color: white">
+        {{ page.palace_language_description|richtext }}
+      </p>
+      <div class="mt-5 sm:mt-8 sm:flex justify-start">
+        <div class="rounded-md shadow">
+          <a
+            href="#"
+            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+            Explore Courses
+          </a>
+        </div>
+        <div class="mt-3 sm:mt-0 sm:ml-3">
+          <a
+            href="#footer"
+            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-primary hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+            Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+ <div class="text-white -mt-14 sm:-mt-24 lg:-mt-36 z-10 relative">
+      <svg
+        class="xl:h-40 xl:w-full"
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none">
+        <path
+          d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
+          fill="currentColor"></path>
+      </svg>
+      <div class="bg-white w-full h-20 -mt-px"></div>
+    </div>
+  <!-- All-In-One Language Learning Platform. -->
+  <div data-aos="flip-up" class="max-w-3xl mx-auto text-center mt-24">
+    <h1 class="font-bold text-darken my-3 text-2xl">
+      Your Trusted Language School
+      <span class="text-primary">Palace School.</span>
+    </h1>
+    <p class="leading-relaxed text-gray-500">
+      Palace School of Languages is a renowned language school offering
+      expert-led, in-person courses in Spanish, French, German, Japanese, and
+      more. We focus on immersive learning and cultural understanding to help
+      students achieve fluency and confidence in real-world settings.
+    </p>
+  </div>
+  <!-- card -->
+  <div class="grid md:grid-cols-3 gap-14 md:gap-5 mt-20">
+    <div data-aos="fade-up" class="bg-white shadow-xl p-6 text-center rounded-xl">
+      <div
+        style="background: #5b72ee"
+        class="rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg transform -translate-y-12">
+        <svg
+          class="w-6 h-6 text-white"
+          viewBox="0 0 33 46"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M24.75 23H8.25V28.75H24.75V23ZM32.3984 9.43359L23.9852 0.628906C23.5984 0.224609 23.0742 0 22.5242 0H22V11.5H33V10.952C33 10.3859 32.7852 9.83789 32.3984 9.43359ZM19.25 12.2188V0H2.0625C0.919531 0 0 0.961328 0 2.15625V43.8438C0 45.0387 0.919531 46 2.0625 46H30.9375C32.0805 46 33 45.0387 33 43.8438V14.375H21.3125C20.1781 14.375 19.25 13.4047 19.25 12.2188ZM5.5 6.46875C5.5 6.07164 5.80766 5.75 6.1875 5.75H13.0625C13.4423 5.75 13.75 6.07164 13.75 6.46875V7.90625C13.75 8.30336 13.4423 8.625 13.0625 8.625H6.1875C5.80766 8.625 5.5 8.30336 5.5 7.90625V6.46875ZM5.5 12.2188C5.5 11.8216 5.80766 11.5 6.1875 11.5H13.0625C13.4423 11.5 13.75 11.8216 13.75 12.2188V13.6562C13.75 14.0534 13.4423 14.375 13.0625 14.375H6.1875C5.80766 14.375 5.5 14.0534 5.5 13.6562V12.2188ZM27.5 39.5312C27.5 39.9284 27.1923 40.25 26.8125 40.25H19.9375C19.5577 40.25 19.25 39.9284 19.25 39.5312V38.0938C19.25 37.6966 19.5577 37.375 19.9375 37.375H26.8125C27.1923 37.375 27.5 37.6966 27.5 38.0938V39.5312ZM27.5 21.5625V30.1875C27.5 30.9817 26.8847 31.625 26.125 31.625H6.875C6.11531 31.625 5.5 30.9817 5.5 30.1875V21.5625C5.5 20.7683 6.11531 20.125 6.875 20.125H26.125C26.8847 20.125 27.5 20.7683 27.5 21.5625Z"
+            fill="white" />
+        </svg>
+      </div>
+      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">
+        Interactive Lessons
+      </h1>
+      <p class="px-4 text-gray-500">
+        Engage in interactive lessons designed to improve your language skills
+        through real-life scenarios.
+      </p>
+    </div>
+    <div
+      data-aos="fade-up"
+      data-aos-delay="150"
+      class="bg-white shadow-xl p-6 text-center rounded-xl">
+      <div
+        style="background: #f48c06"
+        class="rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg transform -translate-y-12">
+        <svg
+          class="w-6 h-6 text-white"
+          viewBox="0 0 48 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 0C11.0532 0 10.2857 0.767511 10.2857 1.71432V5.14285H13.7142V1.71432C13.7142 0.767511 12.9467 0 12 0Z"
+            fill="#F5F5FC" />
+          <path
+            d="M36 0C35.0532 0 34.2856 0.767511 34.2856 1.71432V5.14285H37.7142V1.71432C37.7143 0.767511 36.9468 0 36 0Z"
+            fill="#F5F5FC" />
+          <path
+            d="M42.8571 5.14282H37.7143V12C37.7143 12.9468 36.9468 13.7143 36 13.7143C35.0532 13.7143 34.2857 12.9468 34.2857 12V5.14282H13.7142V12C13.7142 12.9468 12.9467 13.7143 11.9999 13.7143C11.0531 13.7143 10.2856 12.9468 10.2856 12V5.14282H5.14285C2.30253 5.14282 0 7.44535 0 10.2857V42.8571C0 45.6974 2.30253 48 5.14285 48H42.8571C45.6975 48 48 45.6974 48 42.8571V10.2857C48 7.44535 45.6975 5.14282 42.8571 5.14282ZM44.5714 42.8571C44.5714 43.8039 43.8039 44.5714 42.857 44.5714H5.14285C4.19605 44.5714 3.42854 43.8039 3.42854 42.8571V20.5714H44.5714V42.8571Z"
+            fill="#F5F5FC" />
+          <path
+            d="M13.7142 23.9999H10.2857C9.33889 23.9999 8.57138 24.7674 8.57138 25.7142C8.57138 26.661 9.33889 27.4285 10.2857 27.4285H13.7142C14.661 27.4285 15.4285 26.661 15.4285 25.7142C15.4285 24.7674 14.661 23.9999 13.7142 23.9999Z"
+            fill="#F5F5FC" />
+          <path
+            d="M25.7143 23.9999H22.2857C21.3389 23.9999 20.5714 24.7674 20.5714 25.7142C20.5714 26.661 21.3389 27.4285 22.2857 27.4285H25.7143C26.6611 27.4285 27.4286 26.661 27.4286 25.7142C27.4286 24.7674 26.6611 23.9999 25.7143 23.9999Z"
+            fill="#F5F5FC" />
+          <path
+            d="M37.7143 23.9999H34.2857C33.3389 23.9999 32.5714 24.7674 32.5714 25.7142C32.5714 26.661 33.3389 27.4285 34.2857 27.4285H37.7143C38.6611 27.4285 39.4286 26.661 39.4286 25.7142C39.4286 24.7674 38.661 23.9999 37.7143 23.9999Z"
+            fill="#F5F5FC" />
+          <path
+            d="M13.7142 30.8571H10.2857C9.33889 30.8571 8.57138 31.6246 8.57138 32.5714C8.57138 33.5182 9.33889 34.2857 10.2857 34.2857H13.7142C14.661 34.2857 15.4285 33.5182 15.4285 32.5714C15.4285 31.6246 14.661 30.8571 13.7142 30.8571Z"
+            fill="#F5F5FC" />
+          <path
+            d="M25.7143 30.8571H22.2857C21.3389 30.8571 20.5714 31.6246 20.5714 32.5714C20.5714 33.5182 21.3389 34.2857 22.2857 34.2857H25.7143C26.6611 34.2857 27.4286 33.5182 27.4286 32.5714C27.4286 31.6246 26.6611 30.8571 25.7143 30.8571Z"
+            fill="#F5F5FC" />
+          <path
+            d="M37.7143 30.8571H34.2857C33.3389 30.8571 32.5714 31.6246 32.5714 32.5714C32.5714 33.5182 33.3389 34.2857 34.2857 34.2857H37.7143C38.6611 34.2857 39.4286 33.5182 39.4286 32.5714C39.4285 31.6246 38.661 30.8571 37.7143 30.8571Z"
+            fill="#F5F5FC" />
+          <path
+            d="M13.7142 37.7142H10.2857C9.33889 37.7142 8.57138 38.4817 8.57138 39.4286C8.57138 40.3754 9.33889 41.1428 10.2857 41.1428H13.7142C14.661 41.1428 15.4285 40.3753 15.4285 39.4284C15.4285 38.4816 14.661 37.7142 13.7142 37.7142Z"
+            fill="#F5F5FC" />
+          <path
+            d="M25.7143 37.7142H22.2857C21.3389 37.7142 20.5714 38.4817 20.5714 39.4285C20.5714 40.3754 21.3389 41.1429 22.2857 41.1429H25.7143C26.6611 41.1429 27.4286 40.3754 27.4286 39.4285C27.4286 38.4817 26.6611 37.7142 25.7143 37.7142Z"
+            fill="#F5F5FC" />
+          <path
+            d="M37.7143 37.7142H34.2857C33.3389 37.7142 32.5714 38.4817 32.5714 39.4285C32.5714 40.3754 33.3389 41.1429 34.2857 41.1429H37.7143C38.6611 41.1429 39.4286 40.3754 39.4286 39.4285C39.4286 38.4817 38.661 37.7142 37.7143 37.7142Z"
+            fill="#F5F5FC" />
+        </svg>
+      </div>
+      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">
+        Personalized Learning
+      </h1>
+      <p class="px-4 text-gray-500">
+        Customize your learning path with personalized lessons tailored to your
+        language level and goals.
+      </p>
+    </div>
+    <div
+      data-aos="fade-up"
+      data-aos-delay="300"
+      class="bg-white shadow-xl p-6 text-center rounded-xl">
+      <div
+        style="background: #29b9e7"
+        class="rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg transform -translate-y-12">
+        <svg
+          class="w-6 h-6 text-white"
+          viewBox="0 0 55 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.25 19.25C11.2836 19.25 13.75 16.7836 13.75 13.75C13.75 10.7164 11.2836 8.25 8.25 8.25C5.21641 8.25 2.75 10.7164 2.75 13.75C2.75 16.7836 5.21641 19.25 8.25 19.25ZM46.75 19.25C49.7836 19.25 52.25 16.7836 52.25 13.75C52.25 10.7164 49.7836 8.25 46.75 8.25C43.7164 8.25 41.25 10.7164 41.25 13.75C41.25 16.7836 43.7164 19.25 46.75 19.25ZM49.5 22H44C42.4875 22 41.1211 22.6102 40.1242 23.5984C43.5875 25.4977 46.0453 28.9266 46.5781 33H52.25C53.7711 33 55 31.7711 55 30.25V27.5C55 24.4664 52.5336 22 49.5 22ZM27.5 22C32.8195 22 37.125 17.6945 37.125 12.375C37.125 7.05547 32.8195 2.75 27.5 2.75C22.1805 2.75 17.875 7.05547 17.875 12.375C17.875 17.6945 22.1805 22 27.5 22ZM34.1 24.75H33.3867C31.5992 25.6094 29.6141 26.125 27.5 26.125C25.3859 26.125 23.4094 25.6094 21.6133 24.75H20.9C15.4344 24.75 11 29.1844 11 34.65V37.125C11 39.4023 12.8477 41.25 15.125 41.25H39.875C42.1523 41.25 44 39.4023 44 37.125V34.65C44 29.1844 39.5656 24.75 34.1 24.75ZM14.8758 23.5984C13.8789 22.6102 12.5125 22 11 22H5.5C2.46641 22 0 24.4664 0 27.5V30.25C0 31.7711 1.22891 33 2.75 33H8.41328C8.95469 28.9266 11.4125 25.4977 14.8758 23.5984Z"
+            fill="white" />
+        </svg>
+      </div>
+      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken lg:h-14 pt-3">
+        Expert Instructors
+      </h1>
+      <p class="px-4 text-gray-500">
+        Learn from certified language instructors with years of teaching
+        experience.
+      </p>
+    </div>
+  </div>
+
+
+  {% comment %}  Here Getting selected Courses To show On website {% endcomment %}
+  <div class="bg-primary-fade rounded-lg p-4 mt-12 mb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Trending Courses Text -->
+      <h2 class="text-3xl font-bold text-center mb-4">
+        Trending Language Courses
+      </h2>
+      <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+        Explore our most popular language courses that are currently
+        trending. Whether you're a beginner or looking to advance your
+        skills, these courses are designed to help you achieve fluency in no
+        time!
+      </p>
+
+      <!-- Course Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Course Card 1 -->
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 duration-300 h-[500px] flex flex-col"
+        >
+          <img
+            src="https://schoolweb.tdsb.on.ca/portals/leasidehs/images/english-course.jpg?ver=2018-11-06-093530-200"
+            alt="English Course"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-2">English Mastery</h3>
+            <p class="text-gray-600 mb-4">
+              Learn English from beginner to advanced levels with
+              interactive lessons.
+            </p>
+            <div class="flex items-center mb-4">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-500 ml-2">(4.2/5)</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span>6 Months</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+              <span>Instructor: John Doe</span>
+            </div>
+            <button
+              @click="window.location.href='./course.html'"
+              class="mt-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
+            >
+              Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course Card 2 -->
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 duration-300 h-[500px] flex flex-col"
+        >
+          <img
+            src="https://schoolweb.tdsb.on.ca/portals/leasidehs/images/english-course.jpg?ver=2018-11-06-093530-200"
+            alt="Spanish Course"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-2">Spanish for Beginners</h3>
+            <p class="text-gray-600 mb-4">
+              Start speaking Spanish confidently with our beginner-friendly
+              course.
+            </p>
+            <div class="flex items-center mb-4">
+              <span class="text-yellow-400">★★★★★</span>
+              <span class="text-gray-500 ml-2">(4.8/5)</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span>3 Months</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+              <span>Instructor: Maria Garcia</span>
+            </div>
+            <button
+              class="mt-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
+            >
+              Enroll Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Course Card 3 -->
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 duration-300 h-[500px] flex flex-col"
+        >
+          <img
+            src="https://schoolweb.tdsb.on.ca/portals/leasidehs/images/english-course.jpg?ver=2018-11-06-093530-200"
+            alt="French Course"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-2">French Essentials</h3>
+            <p class="text-gray-600 mb-4">
+              Master the basics of French and start communicating
+              effectively.
+            </p>
+            <div class="flex items-center mb-4">
+              <span class="text-yellow-400">★★★☆☆</span>
+              <span class="text-gray-500 ml-2">(3.5/5)</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span>4 Months</span>
+            </div>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+              <span>Instructor: Jean Dupont</span>
+            </div>
+            <button
+              class="mt-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
+            >
+              Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% comment %}  for Students/ teachers section {% endcomment %}
+  <div class="mt-28">
+    <div data-aos="flip-down" class="text-center max-w-screen-md mx-auto">
+      <h1 class="text-3xl font-bold mb-4">
+        What is
+        <span class="text-primary">Palace School of Languages?</span>
+      </h1>
+      <p class="text-gray-500">
+        Palace School of Languages is a renowned language school offering
+        expert-led, in-person courses in Spanish, French, German, Japanese,
+        and more. We focus on immersive learning and cultural understanding
+        to help students achieve fluency and confidence in real-world
+        settings.
+      </p>
+    </div>
+    <div
+      data-aos="fade-up"
+      class="flex flex-col md:flex-row justify-center space-y-5 md:space-y-0 md:space-x-6 lg:space-x-10 mt-7"
+    >
+      <div class="relative md:w-5/12">
+        <img class="rounded-2xl" src="{% static 'img/Rectangle 19.png'  %}" alt="" />
+        <div
+          class="absolute bg-black bg-opacity-20 bottom-0 left-0 right-0 w-full h-full rounded-2xl"
+        >
+          <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <h1
+              class="uppercase text-white font-bold text-center text-sm lg:text-xl mb-3"
+            >
+              FOR INSTRUCTORS
+            </h1>
+            <button
+              class="rounded-full text-white border text-xs lg:text-md px-6 py-3 w-full font-medium focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out"
+            >
+              Start teaching today
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="relative md:w-5/12">
+        <img class="rounded-2xl" src="{% static 'img/Rectangle 21.png'  %}" alt="" />
+        <div
+          class="absolute bg-black bg-opacity-20 bottom-0 left-0 right-0 w-full h-full rounded-2xl"
+        >
+          <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <h1
+              class="uppercase text-white font-bold text-center text-sm lg:text-xl mb-3"
+            >
+              FOR STUDENTS
+            </h1>
+            <button
+              class="rounded-full text-white text-xs lg:text-md px-6 py-3 w-full font-medium focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out"
+              style="background: rgba(35, 189, 238, 0.9)"
+            >
+              Start learning today
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+     
+    
+        {% for add_on in page.add_ons %}
+          {% cycle 'left' 'right' as layout silent %}
+          
+              {% if layout == 'left' %}
+                <div class="mt-10 flex flex-col-reverse md:flex-row items-center md:space-x-10 w-full">
+                  <div data-aos="fade-right" class="md:w-7/12">
+                    {% image add_on.value.image_or_video original as add_on_image %}
+                    <img class="md:w-11/12" src="{{ add_on_image.url }}" alt="{{ add_on.value.title }}" />
+                  </div>
+                  <div
+                    data-aos="fade-left"
+                    class="md:w-5/12 md:transform md:-translate-y-6">
+                    <h1 class="font-semibold text-darken text-3xl lg:pr-64">
+                      <span class="text-primary">{{ add_on.value.title }}
+                    </h1>
+                    <p class="text-gray-500 my-5 lg:pr-24">
+                    {{ add_on.value.text | richtext}}
+                    </p>
+                  </div>
+                </div>           
+              {% else %}
+                <div class="sm:flex items-center sm:space-x-8 w-full">
+                  <div data-aos="fade-right" class="sm:w-1/2 relative">
+                    <div class="bg-primary rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse"></div>
+                    <h1 class="font-semibold text-2xl relative z-50 text-darken lg:pr-10">
+                      {{ add_on.value.title }}
+                    </h1>
+                    <p class="py-5 lg:pr-32">
+                      {{ add_on.value.text | richtext }}
+                    </p>     
+                  </div>
+                  <div data-aos="fade-left" class="sm:w-1/2 relative mt-10 sm:mt-0">
+                    <div
+                      style="background: #23bdee"
+                      class="floating w-24 h-24 absolute rounded-lg z-0 -top-3 -left-3"></div>
+                      {% image add_on.value.image_or_video original as add_on_image %}                    
+                      <img class="rounded-xl z-40 relative" src="{{ add_on_image.url }}" alt="{{ add_on.value.title }}" />
+                      <button
+                        class="bg-white w-14 h-14 rounded-full flex items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out z-50">
+                        <svg
+                          class="w-5 h-5 ml-1"
+                          viewBox="0 0 24 28"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M22.5751 12.8097C23.2212 13.1983 23.2212 14.135 22.5751 14.5236L1.51538 27.1891C0.848878 27.5899 5.91205e-07 27.1099 6.25202e-07 26.3321L1.73245e-06 1.00123C1.76645e-06 0.223477 0.848877 -0.256572 1.51538 0.14427L22.5751 12.8097Z"
+                            fill="#23BDEE" />
+                        </svg>
+                      </button>                  
+                    </div>
+                  </div>
+              {% endif %}      
+        {% endfor %}
+    </div>
+  </section>
+
+  <!-- templates/includes/testimonials_section.html -->
+  <body class="antialiased sans-serif bg-gray-200 text-gray-600">
+    <div
+      class="my-10 md:my-24 container mx-auto flex flex-col shadow-sm overflow-hidden"
+      x-data="{ testimonialActive: 1 }"
+      x-cloak>
+      <div
+        class="relative z-20 text-center text-darken text-2xl font-semibold my-8">
+        What Our
+        <span class="text-primary">Students</span>
+        Say About Us!
+      </div>
+      <!-- Right Section with Testimonials -->
+      <div class="bg-gray-100 rounded-xl">
+        <div class="flex flex-col h-full relative">
+          <!-- Decorative SVG -->
+          <div class="absolute top-0 left-0 mt-3 ml-4 md:mt-5 md:ml-12">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="text-indigo-200 fill-current w-12 h-12 md:w-16 md:h-16"
+              viewBox="0 0 24 24">
+              <path
+                d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35.208-.086.39-.16.539-.222.302-.125.474-.197.474-.197L9.758 4.03c0 0-.218.052-.597.144C8.97 4.222 8.737 4.278 8.472 4.345c-.271.05-.56.187-.882.312C7.272 4.799 6.904 4.895 6.562 5.123c-.344.218-.741.4-1.091.692C5.132 6.116 4.723 6.377 4.421 6.76c-.33.358-.656.734-.909 1.162C3.219 8.33 3.02 8.778 2.81 9.221c-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539.017.109.025.168.025.168l.026-.006C2.535 17.474 4.338 19 6.5 19c2.485 0 4.5-2.015 4.5-4.5S8.985 10 6.5 10zM17.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35.208-.086.39-.16.539-.222.302-.125.474-.197.474-.197L20.758 4.03c0 0-.218.052-.597.144-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.317.143-.686.238-1.028.467-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162C14.219 8.33 14.02 8.778 13.81 9.221c-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539.017.109.025.168.025.168l.026-.006C13.535 17.474 15.338 19 17.5 19c2.485 0 4.5-2.015 4.5-4.5S19.985 10 17.5 10z" />
+            </svg>
+          </div>
+
+          <!-- Testimonials -->
+          <div class="h-full relative z-10 mt-12 ">
+            {% for testimonial in page.testimonials.all %}
+              <div x-show.immediate="testimonialActive === {{ forloop.counter }}">
+                <p
+                  class="text-gray-600 serif font-normal italic text-center px-6  py-6 md:px-16 md:py-10 text-xl md:text-2xl"
+                  x-show.transition="testimonialActive == {{ forloop.counter }}">
+                  "{{ testimonial.quote }}"
+                </p>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Student Avatars -->
+          <div class="flex my-4 justify-center items-center">
+            {% for testimonial in page.testimonials.all %}
+              <button
+                @click.prevent="testimonialActive = {{ forloop.counter }}"
+                class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline inline-block rounded-full mx-2"
+                :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != {{ forloop.counter }}, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == {{ forloop.counter }} }">
+                {{ testimonial.name|slice:":2"|upper }}
+              </button>
+            {% endfor %}
+          </div>
+
+          <!-- Student Names and Roles -->
+          <div class="flex justify-center px-6 pt-2 pb-6 md:py-6">
+            {% for testimonial in page.testimonials.all %}
+              <div class="text-center" x-show="testimonialActive == {{ forloop.counter }}">
+                <h2
+                  class="text-sm md:text-base font-bold text-gray-700 leading-tight">
+                  {{ testimonial.name }}
+                </h2>
+                <small class="text-gray-500 text-xs md:text-sm truncate">
+                  {{ testimonial.role }}
+                </small>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  {% comment %}  Trusted By Companies {% endcomment %}
+   <div class="max-w-4xl mx-auto">
+      <h1 class="text-center mb-3 text-gray-400 font-medium">Trusted by</h1>
+      <div class="grid grid-cols-3 lg:grid-cols-6 gap-4 justify-items-center">
+      {% for brand in page.trusted_by_brands  %}
+      {% image brand.value.logo original as logo_image %} 
+        <img class="h-7" src="{{ logo_image.url }}" alt="{{brand.value.name}}"/>
+      {% endfor %}
+      </div>
+    </div>
+{% endblock %}

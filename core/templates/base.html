@@ -1,0 +1,78 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+        <title>
+            {% block title %}
+            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+            {% wagtail_site as current_site %}
+            {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+            {% endblock %}
+        </title>
+        {% if page.search_description %}
+        <meta name="description" content="{{ page.search_description }}" />
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Force all links in the live preview panel to be opened in a new tab #}
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/core.css' %}">
+        <!-- Tailwind -->
+        <link
+        href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+        rel="stylesheet"
+        />
+        <!-- Alpine -->
+        <script
+        type="module"
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+        ></script>
+        <script
+        nomodule
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js"
+        defer
+        ></script>
+        <!-- AOS -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <!-- Custom style -->
+        <link rel="stylesheet" href="{% static 'css/skilline.css' %}" />
+        <!-- Poppins font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+        />
+        {% block extra_css %}{% endblock %}
+  </head>
+  <body class="antialiased">
+    <!-- Navbar Block -->
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %}
+
+    <!-- Content Block -->
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer Block -->
+    {% block footer %}
+      {% include 'footer.html' %}
+    {% endblock %}
+
+    <!-- AOS init -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>
