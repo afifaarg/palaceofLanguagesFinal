@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags language_switcher %}
 <header x-data="{ scrolled: false, open: false }" @scroll.window="scrolled = window.scrollY > 50" 
   :class="scrolled ? 'bg-primary shadow-md text-primary' : 'bg-transparent'" 
   class="fixed top-0 left-0 w-full transition-all duration-300 z-50">
@@ -14,6 +14,20 @@
       <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
       <li><a href="/palace-languages-courses/" class="text-white hover:text-gray-300">Courses</a></li>
       <li><a href="/palace-languagess-blog/" class="text-white hover:text-gray-300">Blog</a></li>
+      
+      <li>
+    <div>
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.path }}">
+        <select name="language" onchange="this.form.submit()">
+            <option value="en" {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+            <option value="ar" {% if request.LANGUAGE_CODE == 'ar' %}selected{% endif %}>العربية</option>
+            <option value="fr" {% if request.LANGUAGE_CODE == 'fr' %}selected{% endif %}>Français</option>
+        </select>
+    </form>
+</div>
+</li>
     </ul>
     
     <!-- Button to scroll to footer (Desktop) -->

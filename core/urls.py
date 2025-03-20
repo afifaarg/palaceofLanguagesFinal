@@ -5,16 +5,20 @@ from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-
+from django.conf.urls.i18n import i18n_patterns
 from search import views as search_views
-
+from home import views as home_views
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path('i18n/', include('django.conf.urls.i18n')),  
+    path('set-language/<str:language_code>/', home_views.set_language, name='set_language'),
 ]
-
+urlpatterns += i18n_patterns(
+    path('', include('wagtail.urls')),
+)
 
 if settings.DEBUG:
     from django.conf.urls.static import static

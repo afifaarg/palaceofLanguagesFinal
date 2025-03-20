@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags i18n %}
 {% block title %}Home - Palace School of Languages{% endblock %} 
 {% block content %}
 {% image page.hero_background_image original as hero_image %} 
@@ -12,36 +12,33 @@
   ">
   <div
     class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
-  <main class="px-8 sm:px-24 z-10 sm:w-2/3">
-    <div class="">
-      <h2
-        class="text-4xl tracking-tight leading-10 font-extrabold sm:text-5xl text-white sm:leading-none md:text-6xl">
-        {{ page.hero_heading }}
-        <span class="text-primary">{{ page.hero_subheading }}</span>
-      </h2>
-      <div class="mt-3 text-white sm:mt-5 sm:max-w-xl md:mt-5 text-lg force-white ">
-        {{ page.palace_language_description|richtext }}
-    </div>
-      <div class="mt-5 sm:mt-8 sm:flex justify-start">
-        <div class="rounded-md shadow">
-          <a
-            href="#"
-            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-            Explore Courses
-          </a>
+
+<main class="px-8 sm:px-24 z-10 sm:w-full" dir="{% if request.LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+    <div class="{% if request.LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+        <h2 class="text-4xl tracking-tight leading-10 font-extrabold sm:text-5xl text-white sm:leading-none md:text-6xl {% if request.LANGUAGE_CODE == 'ar' %}text-right{% else %}text-left{% endif %}">
+            {{ page.hero_heading }}
+            <span class="text-primary">{{ page.hero_subheading }}</span>
+        </h2>
+        <div class="mt-3 text-white sm:mt-5 sm:max-w-xl md:mt-5 text-lg force-white {% if request.LANGUAGE_CODE == 'ar' %}text-right{% else %}text-left{% endif %}">
+            {{ page.palace_language_description|richtext }}
         </div>
-        <div class="mt-3 sm:mt-0 sm:ml-3">
-          <a
-            href="#footer"
-            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-primary hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-            Register
-          </a>
+        <div class="mt-5 sm:mt-8 sm:flex gap-4 {% if request.LANGUAGE_CODE == 'ar' %}flex-row-reverse justify-end{% else %}justify-start{% endif %}">
+            <div class="rounded-md shadow">
+                <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                    {{ translations.courses }}  
+                </a>
+            </div>
+            <div class="mt-3 sm:mt-0 {% if request.LANGUAGE_CODE == 'ar' %}sm:mr-3 sm:ml-0{% else %}sm:ml-3{% endif %}">
+                <a href="#footer" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-primary hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                   {{ translations.register }}  
+                </a>
+            </div>
         </div>
-      </div>
     </div>
-  </main>
+</main>
 </div>
- <div class="text-white -mt-14 sm:-mt-24 lg:-mt-36 z-10 relative">
+
+    <div class="text-white -mt-14 sm:-mt-24 lg:-mt-36 z-10 relative">
       <svg
         class="xl:h-40 xl:w-full"
         data-name="Layer 1"
@@ -55,18 +52,15 @@
       <div class="bg-white w-full h-20 -mt-px"></div>
     </div>
   <!-- All-In-One Language Learning Platform. -->
-  <div data-aos="flip-up" class="max-w-3xl mx-auto text-center mt-24">
+  <div data-aos="flip-up" class="max-w-3xl mx-auto text-center mt-24" dir="{% if request.LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
     <h1 class="font-bold text-darken my-3 text-2xl">
-      Your Trusted Language School
-      <span class="text-primary">Palace School.</span>
+        {{ translations.Your_Trusted_Language_School }}
+        <span class="text-primary">{{ translations.Palace_School }}</span>
     </h1>
     <p class="leading-relaxed text-gray-500">
-      Palace School of Languages is a renowned language school offering
-      expert-led, in-person courses in Spanish, French, German, Japanese, and
-      more. We focus on immersive learning and cultural understanding to help
-      students achieve fluency and confidence in real-world settings.
+        {{ translations.Palace_School_Description }}
     </p>
-  </div>
+</div>
   <!-- card -->
   <div class="grid md:grid-cols-3 gap-14 md:gap-5 mt-20">
     <div data-aos="fade-up" class="bg-white shadow-xl p-6 text-center rounded-xl">
@@ -83,13 +77,12 @@
             fill="white" />
         </svg>
       </div>
-      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">
-        Interactive Lessons
-      </h1>
-      <p class="px-4 text-gray-500">
-        Engage in interactive lessons designed to improve your language skills
-        through real-life scenarios.
-      </p>
+     <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken text-center">
+            {{ translations.Interactive_Lessons }}
+        </h1>
+        <p class="px-4 text-gray-500 text-center">
+            {{ translations.Interactive_Lessons_Description }}
+        </p>
     </div>
     <div
       data-aos="fade-up"
@@ -141,13 +134,12 @@
             fill="#F5F5FC" />
         </svg>
       </div>
-      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">
-        Personalized Learning
-      </h1>
-      <p class="px-4 text-gray-500">
-        Customize your learning path with personalized lessons tailored to your
-        language level and goals.
-      </p>
+    <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken text-center">
+            {{ translations.Personalized_Learning }}
+        </h1>
+        <p class="px-4 text-gray-500 text-center">
+            {{ translations.Personalized_Learning_Description }}
+        </p>
     </div>
     <div
       data-aos="fade-up"
@@ -166,13 +158,12 @@
             fill="white" />
         </svg>
       </div>
-      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken lg:h-14 pt-3">
-        Expert Instructors
-      </h1>
-      <p class="px-4 text-gray-500">
-        Learn from certified language instructors with years of teaching
-        experience.
-      </p>
+     <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken lg:h-14  text-center">
+            {{ translations.Expert_Instructors }}
+        </h1>
+        <p class="px-4 text-gray-500 text-center">
+            {{ translations.Expert_Instructors_Description }}
+        </p>
     </div>
   </div>
 

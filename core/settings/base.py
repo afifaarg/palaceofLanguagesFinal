@@ -16,6 +16,11 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+# BASE_DIR = Path(__file__).resolve().parent.parent.parent  # Adjust if needed
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, "locale"),
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -47,18 +52,30 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'wagtail_localize',
     'wagtail_localize.locales',
+    
+
     'courses',
 ]
-WAGTAIL_CONTENT_LANGUAGES = [
-    ('en', 'English'),
-    ('fr', 'French'),
-    ('ar', 'Arabic'),
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGE_CODE = 'en'  # Default language
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('fr', _('Français')),
+    ('ar', _('العربية')),
 ]
+
+WAGTAIL_LOCALIZE_SYNC_TRANSLATIONS = True  # Keep translations in sync
+
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
+
 USE_I18N = True
 WAGTAIL_I18N_ENABLED = True
-LANGUAGE_CODE = 'en'  # Default language
+WAGTAIL_I18N_ENABLED = True
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -82,7 +99,8 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+                "django.contrib.messages.context_processors.messages",  # Add this line
+                "home.context_processors.translations",  # Your custom context processor
             ],
         },
     },
