@@ -67,7 +67,7 @@
       <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
         <!-- Image -->
         {% if event.hero_image %}
-          {% image event.hero_image fill-600x400 as event_image %}
+          {% image event.hero_image fill-250x400 as event_image %}
           <img
             src="{{ event_image.url }}"
             alt="{{ event.hero_title }}"

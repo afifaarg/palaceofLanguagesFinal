@@ -10,13 +10,14 @@ from wagtail_localize.models import TranslatableMixin
 from wagtail_localize.fields import TranslatableField
 # Testimonial Snippet (for reusable testimonials)
 @register_snippet
-class Testimonial(models.Model):
+class Testimonial(TranslatableMixin, models.Model):
     name = models.CharField(max_length=255)
     quote = models.TextField()
 
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("quote"),
+    # Mark fields as translatable
+    translatable_fields = [
+        TranslatableField("name"),
+        TranslatableField("quote"),
     ]
 
     def __str__(self):
@@ -25,12 +26,23 @@ class Testimonial(models.Model):
     class Meta:
         verbose_name = "Testimonial"
         verbose_name_plural = "Testimonials"
+        constraints = [
+            models.UniqueConstraint(
+                fields=['translation_key', 'locale'],
+                name='unique_translation_key_locale_home_testimonial'
+            ),
+        ]
 
 
 # Language Model
 @register_snippet
-class Language(models.Model):
+class Language(TranslatableMixin, models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    # Mark fields as translatable
+    translatable_fields = [
+        TranslatableField("name"),
+    ]
 
     def __str__(self):
         return self.name
@@ -38,13 +50,22 @@ class Language(models.Model):
     class Meta:
         verbose_name = "Language"
         verbose_name_plural = "Languages"
+        constraints = [
+            models.UniqueConstraint(
+                fields=['translation_key', 'locale'],
+                name='unique_translation_key_locale_home_language'
+            ),
+        ]
 
-
-# Program Model
 @register_snippet
-class Program(models.Model):
+class Program(TranslatableMixin, models.Model):
     name = models.CharField(max_length=100, unique=True)
     language = models.ForeignKey(Language, on_delete=models.CASCADE, related_name='programs')
+
+    # Mark fields as translatable
+    translatable_fields = [
+        TranslatableField("name"),
+    ]
 
     def __str__(self):
         return f"{self.name} ({self.language.name})"
@@ -52,6 +73,12 @@ class Program(models.Model):
     class Meta:
         verbose_name = "Program"
         verbose_name_plural = "Programs"
+        constraints = [
+            models.UniqueConstraint(
+                fields=['translation_key', 'locale'],
+                name='unique_translation_key_locale_home_program'
+            ),
+        ]
 
 
 class BlogPage( Page, TranslatableMixin):
@@ -289,6 +316,12 @@ class HomePage(Page, TranslatableMixin):
         blank=True,
     )
 
+    # Chosen Courses Section
+    chosen_courses = ParentalManyToManyField("home.CoursePage", blank=True, related_name="home_pages")
+
+    # Chosen Blogs Section
+    chosen_blogs = ParentalManyToManyField("home.EventPage", blank=True, related_name="home_pages")
+
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
@@ -322,6 +355,18 @@ class HomePage(Page, TranslatableMixin):
             ],
             heading="Trusted by Brands Section",
         ),
+        MultiFieldPanel(
+            [
+                FieldPanel("chosen_courses"),
+            ],
+            heading="Chosen Courses Section",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("chosen_blogs"),
+            ],
+            heading="Chosen Blogs Section",
+        ),
     ]
 
     # Register translatable fields
@@ -329,8 +374,9 @@ class HomePage(Page, TranslatableMixin):
         TranslatableField("hero_heading"),
         TranslatableField("hero_subheading"),
         TranslatableField("palace_language_description"),
-        TranslatableField("add_ons") ,
+        TranslatableField("add_ons"),
         TranslatableField("trusted_by_brands"),
+        TranslatableField("chosen_courses"),
+        TranslatableField("chosen_blogs"),
     ]
-
 

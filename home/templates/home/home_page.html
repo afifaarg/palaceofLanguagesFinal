@@ -49,7 +49,15 @@
           d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
           fill="currentColor"></path>
       </svg>
-      <div class="bg-white w-full h-20 -mt-px"></div>
+      <div class="bg-white w-full h-20 -mt-px"> <div class="max-w-4xl mx-auto">
+        <h1 class="text-center mb-3 text-gray-400 font-medium">{{translations.trusted}}</h1>
+        <div class="grid grid-cols-3 lg:grid-cols-6 gap-4 justify-items-center">
+        {% for brand in page.trusted_by_brands  %}
+        {% image brand.value.logo original as logo_image %} 
+          <img class="h-7" src="{{ logo_image.url }}" alt="{{brand.value.name}}"/>
+        {% endfor %}
+        </div>
+      </div></div>
     </div>
   <!-- All-In-One Language Learning Platform. -->
   <div data-aos="flip-up" class="max-w-3xl mx-auto text-center mt-24" dir="{% if request.LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
@@ -171,271 +179,121 @@
   {% comment %}  Here Getting selected Courses To show On website {% endcomment %}
   <div class="bg-primary-fade rounded-lg p-4 mt-12 mb-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Trending Courses Text -->
-      <h2 class="text-3xl font-bold text-center mb-4">
-        Trending Language Courses
-      </h2>
-      <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
-        Explore our most popular language courses that are currently
-        trending. Whether you're a beginner or looking to advance your
-        skills, these courses are designed to help you achieve fluency in no
-        time!
-      </p>
+        <!-- Trending Courses Text -->
+        <h2 class="text-3xl font-bold text-center text-primary mb-4">
+            {{ translations.trending_courses_title }}
+        </h2>
+        <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+            {{ translations.trending_courses_description }}
+        </p>
 
-      <!-- Course Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Course Card 1 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 duration-300 h-[500px] flex flex-col"
-        >
-          <img
-            src="https://schoolweb.tdsb.on.ca/portals/leasidehs/images/english-course.jpg?ver=2018-11-06-093530-200"
-            alt="English Course"
-            class="w-full h-48 object-cover"
-          />
-          <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-xl font-bold mb-2">English Mastery</h3>
-            <p class="text-gray-600 mb-4">
-              Learn English from beginner to advanced levels with
-              interactive lessons.
-            </p>
-            <div class="flex items-center mb-4">
-              <span class="text-yellow-400">★★★★☆</span>
-              <span class="text-gray-500 ml-2">(4.2/5)</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-500 mb-4">
-              <svg
-                class="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-              <span>6 Months</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-500 mb-4">
-              <svg
-                class="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                ></path>
-              </svg>
-              <span>Instructor: John Doe</span>
-            </div>
-            <button
-              @click="window.location.href='./course.html'"
-              class="mt-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
-            >
-              Enroll Now
-            </button>
-          </div>
-        </div>
+        <!-- Course Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Loop through chosen_courses -->
+            {% for course in page.chosen_courses.all %}
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <!-- Course Banner Image -->
+              {% if course.banner_image %}
+                  {% image course.banner_image original as course_image %}
+                  <img src="{{ course_image.url }}" alt="{{ course.banner_title }}" class="w-full h-48 object-cover">
+              {% endif %}
 
-        <!-- Course Card 2 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 duration-300 h-[500px] flex flex-col"
-        >
-          <img
-            src="https://schoolweb.tdsb.on.ca/portals/leasidehs/images/english-course.jpg?ver=2018-11-06-093530-200"
-            alt="Spanish Course"
-            class="w-full h-48 object-cover"
-          />
-          <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-xl font-bold mb-2">Spanish for Beginners</h3>
-            <p class="text-gray-600 mb-4">
-              Start speaking Spanish confidently with our beginner-friendly
-              course.
-            </p>
-            <div class="flex items-center mb-4">
-              <span class="text-yellow-400">★★★★★</span>
-              <span class="text-gray-500 ml-2">(4.8/5)</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-500 mb-4">
-              <svg
-                class="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-              <span>3 Months</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-500 mb-4">
-              <svg
-                class="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                ></path>
-              </svg>
-              <span>Instructor: Maria Garcia</span>
-            </div>
-            <button
-              class="mt-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
-            >
-              Enroll Now
-            </button>
-          </div>
-        </div>
+              <!-- Course Details -->
+              <div class="p-6">
+                  <h2 class="text-2xl font-bold text-gray-800 mb-2">
+                      <a href="{% pageurl course %}">{{ course.banner_title }}</a>
+                  </h2>
+                  <p class="text-gray-600 mb-4">{{ course.course_overview|richtext|truncatewords:20 }}</p>
 
-        <!-- Course Card 3 -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 duration-300 h-[500px] flex flex-col"
-        >
-          <img
-            src="https://schoolweb.tdsb.on.ca/portals/leasidehs/images/english-course.jpg?ver=2018-11-06-093530-200"
-            alt="French Course"
-            class="w-full h-48 object-cover"
-          />
-          <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-xl font-bold mb-2">French Essentials</h3>
-            <p class="text-gray-600 mb-4">
-              Master the basics of French and start communicating
-              effectively.
-            </p>
-            <div class="flex items-center mb-4">
-              <span class="text-yellow-400">★★★☆☆</span>
-              <span class="text-gray-500 ml-2">(3.5/5)</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-500 mb-4">
-              <svg
-                class="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-              <span>4 Months</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-500 mb-4">
-              <svg
-                class="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                ></path>
-              </svg>
-              <span>Instructor: Jean Dupont</span>
-            </div>
-            <button
-              class="mt-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition duration-300"
-            >
-              Enroll Now
-            </button>
+                  <!-- Course Metadata -->
+                  <div class="flex flex-wrap gap-2 mb-4">
+                      <span class="bg-indigo-100 text-primary px-3 py-1 rounded-full text-sm">
+                          <i class="fas fa-user text-sm"></i>
+                          {{ course.target_learner|title }}
+                      </span>
+                      <span class="bg-indigo-100 text-primary px-3 py-1 rounded-full text-sm">
+                          <i class="fas fa-book text-sm"></i>
+                          {{ course.program.name }}
+                      </span>
+                      <span class="bg-indigo-100 text-primary px-3 py-1 rounded-full text-sm">
+                          <i class="fas fa-globe text-sm"></i>
+                          {{ course.language.name }}
+                      </span>
+                  </div>
+
+                  <!-- Enroll Button -->
+                  <a href="{% pageurl course %}" class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2">
+                      <i class="fas fa-check-circle"></i>
+                      {{translations.enroll}}
+                  </a>
+              </div>
           </div>
+            {% endfor %}
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
 
   {% comment %}  for Students/ teachers section {% endcomment %}
   <div class="mt-28">
     <div data-aos="flip-down" class="text-center max-w-screen-md mx-auto">
-      <h1 class="text-3xl font-bold mb-4">
-        What is
-        <span class="text-primary">Palace School of Languages?</span>
-      </h1>
-      <p class="text-gray-500">
-        Palace School of Languages is a renowned language school offering
-        expert-led, in-person courses in Spanish, French, German, Japanese,
-        and more. We focus on immersive learning and cultural understanding
-        to help students achieve fluency and confidence in real-world
-        settings.
-      </p>
+        <h1 class="text-3xl font-bold mb-4">
+            {{ translations.what_is_palace_school_title }}
+            <span class="text-primary">{{ translations.palace_school_highlight }}</span>
+        </h1>
+        <p class="text-gray-500">
+            {{ translations.palace_school_description }}
+        </p>
     </div>
     <div
-      data-aos="fade-up"
-      class="flex flex-col md:flex-row justify-center space-y-5 md:space-y-0 md:space-x-6 lg:space-x-10 mt-7"
+        data-aos="fade-up"
+        class="flex flex-col md:flex-row justify-center space-y-5 md:space-y-0 md:space-x-6 lg:space-x-10 mt-7"
     >
-      <div class="relative md:w-5/12">
-        <img class="rounded-2xl" src="{% static 'img/instructors.jpg'  %}" alt="" />
-        <div
-          class="absolute bg-black bg-opacity-20 bottom-0 left-0 right-0 w-full h-full rounded-2xl"
-        >
-          <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <h1
-              class="uppercase text-white font-bold text-center text-sm lg:text-xl mb-3"
+        <div class="relative md:w-5/12">
+            <img class="rounded-2xl" src="{% static 'img/instructors.jpg' %}" alt="" />
+            <div
+                class="absolute bg-black bg-opacity-20 bottom-0 left-0 right-0 w-full h-full rounded-2xl"
             >
-              FOR INSTRUCTORS
-            </h1>
-            <button
-              class="rounded-full text-white border text-xs lg:text-md px-6 py-3 w-full font-medium focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out"
-            >
-              Start teaching today
-            </button>
-          </div>
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                >
+                    <h1
+                        class="uppercase text-white font-bold text-center text-sm lg:text-xl mb-3"
+                    >
+                        {{ translations.for_instructors_title }}
+                    </h1>
+                    <button
+                        class="rounded-full text-white border text-xs lg:text-md px-6 py-3 w-full font-medium focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out"
+                    >
+                        {{ translations.start_teaching_button }}
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="relative md:w-5/12">
-        <img class="rounded-2xl" src="{% static 'img/students.jpg'  %}" alt="" />
-        <div
-          class="absolute bg-black bg-opacity-20 bottom-0 left-0 right-0 w-full h-full rounded-2xl"
-        >
-          <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <h1
-              class="uppercase text-white font-bold text-center text-sm lg:text-xl mb-3"
+        <div class="relative md:w-5/12">
+            <img class="rounded-2xl h-full" src="{% static 'img/students.jpg' %}" alt="" />
+            <div
+                class="absolute bg-black bg-opacity-20 bottom-0 left-0 right-0 w-full h-full rounded-2xl"
             >
-              FOR STUDENTS
-            </h1>
-            <button
-              class="rounded-full text-white text-xs lg:text-md px-6 py-3 w-full font-medium focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out"
-              style="background: rgba(35, 189, 238, 0.9)"
-            >
-              Start learning today
-            </button>
-          </div>
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                >
+                    <h1
+                        class="uppercase text-white font-bold text-center text-sm lg:text-xl mb-3"
+                    >
+                        {{ translations.for_students_title }}
+                    </h1>
+                    <button
+                        class="rounded-full text-white text-xs lg:text-md px-6 py-3 w-full font-medium focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out"
+                        style="background: rgba(35, 189, 238, 0.9)"
+                    >
+                        {{ translations.start_learning_button }}
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
   <section class="py-12">
     <div class="container mx-auto px-4">
@@ -445,10 +303,10 @@
           {% cycle 'left' 'right' as layout silent %}
           
               {% if layout == 'left' %}
-                <div class="mt-10 flex flex-col-reverse md:flex-row items-center md:space-x-10 w-full">
+                <div class="mt-8 flex flex-col-reverse md:flex-row items-center md:space-x-10 w-full">
                   <div data-aos="fade-right" class="md:w-7/12">
                     {% image add_on.value.image_or_video original as add_on_image %}
-                    <img class="md:w-11/12" src="{{ add_on_image.url }}" alt="{{ add_on.value.title }}" />
+                    <img class="md:w-11/12 rounded-xl " src="{{ add_on_image.url }}" alt="{{ add_on.value.title }}" />
                   </div>
                   <div
                     data-aos="fade-left"
@@ -462,7 +320,7 @@
                   </div>
                 </div>           
               {% else %}
-                <div class="sm:flex items-center sm:space-x-8 w-full">
+                <div class="sm:flex mt-4 items-center sm:space-x-8 w-full">
                   <div data-aos="fade-right" class="sm:w-1/2 relative">
                     <div class="bg-primary rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse"></div>
                     <h1 class="font-semibold text-2xl relative z-50 text-darken lg:pr-10">
@@ -478,18 +336,7 @@
                       class="floating w-24 h-24 absolute rounded-lg z-0 -top-3 -left-3"></div>
                       {% image add_on.value.image_or_video original as add_on_image %}                    
                       <img class="rounded-xl z-40 relative" src="{{ add_on_image.url }}" alt="{{ add_on.value.title }}" />
-                      <button
-                        class="bg-white w-14 h-14 rounded-full flex items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out z-50">
-                        <svg
-                          class="w-5 h-5 ml-1"
-                          viewBox="0 0 24 28"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M22.5751 12.8097C23.2212 13.1983 23.2212 14.135 22.5751 14.5236L1.51538 27.1891C0.848878 27.5899 5.91205e-07 27.1099 6.25202e-07 26.3321L1.73245e-06 1.00123C1.76645e-06 0.223477 0.848877 -0.256572 1.51538 0.14427L22.5751 12.8097Z"
-                            fill="#23BDEE" />
-                        </svg>
-                      </button>                  
+                                        
                     </div>
                   </div>
               {% endif %}      
@@ -504,10 +351,8 @@
       x-data="{ testimonialActive: 1 }"
       x-cloak>
       <div
-        class="relative z-20 text-center text-darken text-2xl font-semibold my-8">
-        What Our
-        <span class="text-primary">Students</span>
-        Say About Us!
+        class="relative z-20 text-center text-darken text-2xl text-primary font-semibold my-8">
+       {{translations.testimonials}}
       </div>
       <!-- Right Section with Testimonials -->
       <div class="bg-gray-100 rounded-xl">
@@ -567,14 +412,89 @@
     </div>
   </body>
 
-  {% comment %}  Trusted By Companies {% endcomment %}
-   <div class="max-w-4xl mx-auto">
-      <h1 class="text-center mb-3 text-gray-400 font-medium">Trusted by</h1>
-      <div class="grid grid-cols-3 lg:grid-cols-6 gap-4 justify-items-center">
-      {% for brand in page.trusted_by_brands  %}
-      {% image brand.value.logo original as logo_image %} 
-        <img class="h-7" src="{{ logo_image.url }}" alt="{{brand.value.name}}"/>
-      {% endfor %}
-      </div>
+  <div data-aos="zoom-in" class="mt-16 text-center">
+    <h1 class="text-darken text-2xl font-semibold">
+        {{ translations.explore_events_title }}
+    </h1>
+    <p class="text-gray-500 my-5">
+        {{ translations.explore_events_description }}
+    </p>
+</div>
+<div data-aos="zoom-in-up" class="my-14 flex flex-col lg:flex-row lg:space-x-20">
+    <!-- Featured Event -->
+    {% if page.chosen_events.all %}
+        {% with featured_event=page.chosen_events.all.0 %}
+            <div class="lg:w-6/12">
+                <img
+                    class="w-full mb-6 rounded-xl"
+                    src="{{ featured_event.image.url }}"
+                    alt="{{ featured_event.title }}"
+                />
+                <span class="bg-yellow-300 text-darken font-semibold px-4 py-px text-sm rounded-full">
+                    {{ translations.featured_label }}
+                </span>
+                <h1 class="text-gray-800 font-semibold my-3 text-xl">
+                    {{ featured_event.title }}
+                </h1>
+                <p class="text-gray-500 mb-3">
+                    {{ featured_event.short_description }}
+                </p>
+                <a
+                    href="{{ featured_event.url }}"
+                    class="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold hover:bg-yellow-300 hover:text-darken transition-all"
+                >
+                    {{ translations.check_event_button }}
+                </a>
+            </div>
+        {% endwith %}
+    {% endif %}
+
+    <!-- Other Events -->
+    <div class="lg:w-7/12 flex flex-col justify-between mt-12 space-y-5 lg:space-y-0 lg:mt-0">
+        {% for event in page.chosen_blogs.all|slice:"1:" %}
+        {% image event.hero_image fill-600x400 as event_image %}
+
+            <div class="flex space-x-5">
+                <div class="w-4/12">
+                    <div class="relative">
+                        <img
+                            class="rounded-xl w-full"
+                            src="{{ event_image.url }}"
+                            alt="{{ event.hero_title }}"
+                        />
+                        {% if forloop.first %}
+                            <span class="absolute bottom-2 right-2 bg-yellow-300 text-darken font-semibold px-4 py-px text-sm rounded-full hidden sm:block">
+                                {{ translations.new_label }}
+                            </span>
+                        {% elif forloop.counter == 2 %}
+                            <span class="absolute bottom-2 right-2 bg-yellow-300 text-darken font-semibold px-4 py-px text-sm rounded-full hidden sm:block">
+                                {{ translations.popular_label }}
+                            </span>
+                        {% else %}
+                            <span class="absolute bottom-2 right-2 bg-yellow-300 text-darken font-semibold px-4 py-px text-sm rounded-full hidden sm:block">
+                                {{ translations.special_label }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="w-8/12">
+                    <h1 class="text-gray-800 text-sm sm:text-lg font-semibold">
+                      {{ event.hero_title }}
+                    </h1>
+                    <p class="text-gray-500 my-2 sm:my-4 text-xs sm:text-md">
+                      {{ page.event_overview|richtext }}
+                    </p>
+                    <a
+                        href="{{ event.url }}"
+                        class="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold hover:bg-yellow-300 hover:text-darken transition-all"
+                    >
+                        {{ translations.check_event_button }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
     </div>
+</div>
+  {% comment %}  Trusted By Companies {% endcomment %}
+  
 {% endblock %}
